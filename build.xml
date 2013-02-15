@@ -6,20 +6,12 @@
   <property name="resource.dir"      location="${basedir}/src/main/resources" />
   <property name="bin.dir"          location="${basedir}/bin"/>
   <property name="lib.dir"          location="${basedir}/lib"/>
-  <property name="conf.dir"         location="${basedir}/conf"/>
   <property name="build.dir"        location="${basedir}/build"/>
   <property name="classes.dir"      location="${build.dir}/classes"/>
-
-  <!-- VERSION NUMBERS -->
-  <property name="major" value="0" />
-  <property name="minor" value="1" />
-    
 
   <path id="java.classpath">
     <fileset dir="${lib.dir}">
   	  <include name="*.jar" />
-      <include name="depends/*.jar" />
-      <include name="tools/*.jar" />
     </fileset>
   </path>
 
@@ -28,8 +20,6 @@
 	  <delete dir="${build.dir}"/>
     <mkdir dir="${build.dir}"/>
     <mkdir dir="${classes.dir}"/>
-    <delete dir="${junit.out.dir}"/>
-    <mkdir  dir="${junit.out.dir}"/>
 	</target>
 
   <target name="avrocodegenerate">
@@ -53,27 +43,7 @@
     </javac>
   </target>
 
-	<patternset id="prop.files">
-	<include name="**/*.properties" />
-	</patternset>
-	<target name="copy.prop.files">
-	<copy todir="${classes.dir}" overwrite="true">
-	<fileset dir="${sources.dir}/main/resources/">
-	<patternset refid="prop.files" />
-	</fileset>
-	</copy>
-	</target>
-
   <target name="compile" depends="avrocodegenerate,javacompile" />
-  
-
-<!-- This will make sure the profile is set, if not then default is "prod"-->	
-  <condition property="PROFILE" value="prod">
-	<not>  
-	  <isset property="PROFILE"/>
-	</not>
-  </condition>
-  	
   
   <target name="clean-build" depends="clean,compile"/>
   
