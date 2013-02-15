@@ -1,8 +1,9 @@
-<project name="analytics" default="main" basedir=".">
-  <description>Analytics POC</description>
+<project name="avro-examples" default="main" basedir=".">
+  <description>Avro Examples</description>
 
   <property name="java.home"        location="${JAVA_HOME}"/>
   <property name="sources.dir"      location="${basedir}/src" />
+  <property name="resource.dir"      location="${basedir}/src/main/resources" />
   <property name="bin.dir"          location="${basedir}/bin"/>
   <property name="lib.dir"          location="${basedir}/lib"/>
   <property name="conf.dir"         location="${basedir}/conf"/>
@@ -23,7 +24,7 @@
   </path>
 
 	<target name="clean">
-    <delete dir="${source.dir}/main/java/com/vibrantmedia/analytics/schema/avro"/>
+    <delete dir="${source.dir}/main/java/com/vibrantmedia/blog/schema/avro"/>
 	  <delete dir="${build.dir}"/>
     <mkdir dir="${build.dir}"/>
     <mkdir dir="${classes.dir}"/>
@@ -38,7 +39,7 @@
       </classpath>
       <arg value="compile"/>
       <arg value="schema"/>
-      <arg value="${basedir}/avro/student.avsc"/>
+      <arg value="${resource.dir}/avro/student.avsc"/>
       <arg value="${sources.dir}"/>
     </java>
   </target>

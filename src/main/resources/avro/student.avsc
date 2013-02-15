@@ -1,0 +1,11 @@
+{
+    "namespace": "com.vibrantmedia.analytics.schema.avro",
+    "type": "record", 
+    "name": "Student",
+    "fields" : [
+        {"name": "studentId", "type": ["null","int"], "default":null},
+        {"name": "firstName", "type": ["null","string"], "default":null},
+        {"name": "lastName", "type": ["null","string"], "default":null},
+        {"name": "address", "type": ["null","string"], "default":null}
+    ]
+}
